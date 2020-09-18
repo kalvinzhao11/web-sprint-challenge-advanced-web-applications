@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import BubblePage from "./BubblePage";
 import {fetchBubble as mockFetchBubble} from '../api/fetchBubble'
 
@@ -87,4 +87,14 @@ test("Fetches data and renders the bubbles", () => {
   // Finish this test
   mockFetchBubble.mockResolvedValueOnce(colors);
   render(<BubblePage/>)
+});
+test('Able to find hex and color label', async () => {
+  mockFetchBubble.mockResolvedValueOnce(colors);
+  render(<BubblePage />)
+  const colorName = screen.findByLabelText(/color name:/i)
+  const hexCode = screen.findByLabelText(/hex code:/i)
+  // fireEvent.change(colorName, {target : {value : "aquamarine"}})
+  // fireEvent.change(hexCode, {target : {value : "#7fffd4"}})
+
+
 });

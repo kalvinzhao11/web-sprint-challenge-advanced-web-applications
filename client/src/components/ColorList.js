@@ -124,18 +124,20 @@ const ColorList = ({ colors, updateColors }) => {
       {/* stretch - build another form here to add a color */}
       <form onSubmit={addColor}>
           <legend>add color</legend>
-          <label>
+          <label htmlFor="color">
             color name:
             <input
+              id="color"
               onChange={e =>
                 setNewColor({ ...newColor, color: e.target.value })
               }
               value={newColor.color}
             />
           </label>
-          <label>
+          <label htmlFor="hex">
             hex code:
             <input
+              id="hex"
               onChange={e =>
                 setNewColor({
                   ...newColor,
